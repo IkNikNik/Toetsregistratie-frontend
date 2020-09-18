@@ -1,0 +1,102 @@
+/* Basics */
+html {
+    font-family: 'Avenir';
+    font-weight: 100;
+}
+
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    margin: 0;
+    padding: 0;
+    width: 70px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    text-align: center;
+}
+
+.navbar a {
+    display: block;
+    color: black;
+    padding: 30px 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.navbar a.active {
+    background-color: #28aeff;
+    color: white;
+}
+
+.navbar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.navbar img {
+    width: 40px;
+}
+
+.content {
+    margin-left: 100px;
+    padding: 1px 16px;
+    color: #3d3d3d;
+}
+
+.content h3 {
+    font-size: 30px;
+    border: #575757;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+}
+
+.content h2 {
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+}
+
+.profiel img {
+    height: 170px;
+    padding: 10px;
+}
+
+.profiel {
+    margin: 20px 100px 0;
+    width: max-content;
+}
+
+
+.profiel p {
+    padding: 10px;
+}
+
+.statestiek {
+    margin: 50px 100px 0;
+    width: max-content;
+}
+
+td {
+    text-align: center;
+}
+
+th {
+    text-align: left;
+}
+
+td, th {
+    padding: 10px;
+}
+
