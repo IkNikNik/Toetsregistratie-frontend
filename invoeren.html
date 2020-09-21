@@ -33,12 +33,14 @@
         <!--        <form id="myForm" action="http://62.251.126.253:63231/api/cijfer/" method="post">-->
         <label for="naam-dropdown">Naam leerling: </label>
         <select id="naam-dropdown" name="student" required></select> <br>
+        <label for="blok-dropdown">Blok: </label>
+        <select id="blok-dropdown" name="blok" required></select> <br>
         <label for="toets-dropdown">Toets: </label>
-        <select id="toets-dropdown" name="toets" required></select> <br>
+        <select id="toets-dropdown" name="toets_code" required></select> <br>
         <label for="cijfer">Resultaat: </label>
-        <select id="cijfer" name="cijfer" required>
-            <option value="5.0">Voldoende</option>
-            <option value="1.0">Onvoldoende</option>
+        <select id="cijfer" name="voldoende" required>
+            <option value="true">Voldoende</option>
+            <option value="false">Onvoldoende</option>
         </select>
 
 

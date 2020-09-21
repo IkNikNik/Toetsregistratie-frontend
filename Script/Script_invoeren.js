@@ -24,6 +24,30 @@ function loadstudentandtoets() {
             }
         )
 
+        let dropdownBlok = document.getElementById('blok-dropdown');
+        dropdownBlok.length = 0;
+    fetch('http://62.251.126.253:63231/api/blok.json')
+        .then(
+            function (response) {
+                if (response.status !== 200) {
+                    console.warn('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+
+                response.json().then(function (data) {
+                    let optionBlok;
+
+                    for (let i = 0; i < data.length; i++) {
+                        optionBlok = document.createElement('option');
+                        optionBlok.text = data[i].blok;
+                        optionBlok.value = data[i].id;
+                        dropdownBlok.add(optionBlok);
+                    }
+                });
+            }
+        )
+
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
 
@@ -63,10 +87,13 @@ function post_invoer() {
 
     var selCijfer = document.getElementById('cijfer');
     var selectedCijfer = selCijfer.options[selCijfer.selectedIndex];
+
+    var selBlok = document.getElementById('blok-dropdown');
+    var selectedBlok = selBlok.options[selBlok.selectedIndex];
     //waarde cijfer uit textveld lezen en in data stoppen.
 
 
-    let data = {'student': selectedStudent.value, 'toets': selectedToets.value, 'cijfer' : selectedCijfer.value};
+    let data = {'student': selectedStudent.value, 'blok': selectedBlok.value, 'toets_code': selectedToets.value, 'voldoende' : selectedCijfer.value};
     fetch('http://62.251.126.253:63231/api/cijferid/', {
         method: 'post',
         headers: {
