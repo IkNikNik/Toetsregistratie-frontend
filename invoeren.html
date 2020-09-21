@@ -6,6 +6,7 @@
     <link href="Style/Style_invoeren.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
     <script type="text/javascript" src="Script/Script_invoeren.js"></script>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
 </head>
 
 <body onload="loadstudentandtoets()">
@@ -28,19 +29,23 @@
     <p>Voer hier het toetsresultaat in</p>
 
 
-
     <div class="form">
-<!--        <form id="myForm" action="http://62.251.126.253:63231/api/cijfer/" method="post">-->
-            <label for="naam-dropdown">Naam leerling: </label>
-            <select id="naam-dropdown" name="student" required></select> <br>
-            <label for="toets-dropdown">Toets: </label>
-            <select id="toets-dropdown" name="toets" required></select> <br>
-            <label for="cijfer">Resultaat: </label>
-            <input id="cijfer" type="number" min="1" max="10" step="0.1" name="cijfer" required
-            ><br>
-            <br>
-            <button onclick="post_invoer()">Opslaan</button>
-<!--        </form>-->
+        <!--        <form id="myForm" action="http://62.251.126.253:63231/api/cijfer/" method="post">-->
+        <label for="naam-dropdown">Naam leerling: </label>
+        <select id="naam-dropdown" name="student" required></select> <br>
+        <label for="toets-dropdown">Toets: </label>
+        <select id="toets-dropdown" name="toets" required></select> <br>
+        <label for="cijfer">Resultaat: </label>
+        <select id="cijfer" name="cijfer" required>
+            <option value="5.0">Voldoende</option>
+            <option value="1.0">Onvoldoende</option>
+        </select>
+
+
+        <br>
+        <br>
+        <button onclick="post_invoer()" type="submit">Opslaan</button>
+        <!--        </form>-->
     </div>
 </div>
 

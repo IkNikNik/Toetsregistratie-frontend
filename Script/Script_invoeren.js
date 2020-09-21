@@ -61,13 +61,33 @@ function post_invoer() {
     var selStudent = document.getElementById('naam-dropdown');
     var selectedStudent = selStudent.options[selStudent.selectedIndex];
 
+    var selCijfer = document.getElementById('cijfer');
+    var selectedCijfer = selCijfer.options[selCijfer.selectedIndex];
     //waarde cijfer uit textveld lezen en in data stoppen.
 
-    let data = {'toets': selectedToets.value, 'student': selectedStudent.value};
-    alert(JSON.stringify(data));
 
-    fetch('http://62.251.126.253:63231/api/cijfer', {
+    let data = {'student': selectedStudent.value, 'toets': selectedToets.value, 'cijfer' : selectedCijfer.value};
+    fetch('http://62.251.126.253:63231/api/cijferid/', {
         method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify(data)
-    });
+    })
+        .then(response => {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf('application/json') != -1)
+                return response.json()
+            else {
+                console.log("nonJson received");
+                console.log(response.text());
+                return null;
+            }
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
