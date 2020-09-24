@@ -24,8 +24,8 @@ function loadstudentandtoets() {
             }
         )
 
-        let dropdownBlok = document.getElementById('blok-dropdown');
-        dropdownBlok.length = 0;
+    let dropdownBlok = document.getElementById('blok-dropdown');
+    dropdownBlok.length = 0;
     fetch('http://62.251.126.253:63231/api/blok.json')
         .then(
             function (response) {
@@ -93,7 +93,12 @@ function post_invoer() {
     //waarde cijfer uit textveld lezen en in data stoppen.
 
 
-    let data = {'student': selectedStudent.value, 'blok': selectedBlok.value, 'toets_code': selectedToets.value, 'voldoende' : selectedCijfer.value};
+    let data = {
+        'student': selectedStudent.value,
+        'blok': selectedBlok.value,
+        'toets_code': selectedToets.value,
+        'voldoende': selectedCijfer.value
+    };
     fetch('http://62.251.126.253:63231/api/cijferid/', {
         method: 'post',
         headers: {

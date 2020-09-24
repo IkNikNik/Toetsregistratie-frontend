@@ -1,29 +1,5 @@
 function loadjaarblok() {
 
-    let dropdownJaar = document.getElementById('jaar-dropdown');
-    dropdownJaar.length = 0;
-    fetch('http://62.251.126.253:63231/api/jaar.json')
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    console.warn('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    return;
-                }
-
-                response.json().then(function (data) {
-                    let optionJaar;
-
-                    for (let i = 0; i < data.length; i++) {
-                        optionJaar = document.createElement('option');
-                        optionJaar.text = data[i].jaar;
-                        optionJaar.value = data[i].id;
-                        dropdownJaar.add(optionJaar);
-                    }
-                });
-            }
-        )
-
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
     fetch('http://62.251.126.253:63231/api/blok.json')
@@ -54,11 +30,11 @@ function loadjaarblok() {
 
 
 function post_toets() {
-    var selToets = document.getElementById('toetscode');
-    var selectedToets = selToets.options[selToets.selectedIndex];
+    var selToets = document.getElementById('toetscode').value;
+    // var selectedToets = selToets[selToets.selectedIndex];
 
-    var selToetsNaam = document.getElementById('toetsnaam');
-    var selectedToetsNaam = selToetsnaam.options[selToetsNaam.selectedIndex];
+    var selToetsNaam = document.getElementById('toetsnaam').value;
+    // var selectedToetsNaam = selToetsNaam[selToetsNaam.selectedIndex];
 
     var selJaar = document.getElementById('jaar-dropdown');
     var selectedJaar = selJaar.options[selJaar.selectedIndex];
@@ -69,9 +45,9 @@ function post_toets() {
 
 
     let data = {
-        'toets_naam': selectedToetsNaam.value,
+        'toets_naam': selToetsNaam,
         'blok': selectedBlok.value,
-        'toets_code': selectedToets.value,
+        'toets_code': selToets,
         'jaar': selectedJaar.value
     };
     fetch('http://62.251.126.253:63231/api/toets/', {

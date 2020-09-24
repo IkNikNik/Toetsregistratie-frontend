@@ -75,22 +75,23 @@ p {
     color: #28aeff;
 }
 
-.sidenav a.active {
+.sidenav a:hover:not active {
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+.sidenav a:hover:active {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.sidenav a:active {
     color: #3d3d3d;
     border-left: #3d3d3d 2px solid;
 }
 
-.sidenav a:hover:not(.active) {
-    text-decoration: underline;
-    cursor: pointer;
-
-}
-.sidenav a:hover.active {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-/* titel */
+    /* titel */
 .title h3 {
     margin-left: 100px;
     font-size: 30px;
