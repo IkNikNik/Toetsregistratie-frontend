@@ -4,42 +4,55 @@
     <meta charset="UTF-8">
     <title>overzicht</title>
     <link href="Style/Style_overzicht.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
+    <link href="Style/Style_basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Script/Script_overzicht.js" async></script>
 </head>
 
 <body>
-<div class="header">
-    <ul class="navbar">
-        <li><a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
-               title="HU"><img src="Visuals_index/HU_logo_klein.png"></a></li>
-        <li><a title="HOME">Account</a></li>
-        <li><a title="KOM KENNISMAKEN">Dashboard</a></li>
-        <li><a title='SHOWCASE'>Cursussen</a></li>
-        <li><a title="BLOG" class="active">Resultaten</a></li>
-        <li><a title="PLANNING">Groepen</a></li>
-        <li><a title="PRAKTISCH">Kalender</a></li>
-    </ul>
+<div class="navbar">
+    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
+       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
+    <a>Account</a>
+    <a>Dashboard</a>
+    <a>Cursussen</a>
+    <a href="index.html" class="active">Resultaten</a>
+    <a>Groepen</a>
+    <a>Kalender</a>
+</div>
+
+<div class="sidenav">
+    <a href="overzicht.html">Overzicht</a>
+    <a href="toets_invoeren.html">Toets invoeren</a>
+    <a href="#">Student invoeren</a>
+    <a href="invoeren.html" class="active">Resultaat invoeren</a>
+    <a>Statestiek</a>
+    <a href="Student.html">Student</a>
+</div>
+
+<div class="title">
+    <h3>Resultaten</h3>
 </div>
 
 <div class="content">
-    <h3>Resultaten</h3>
     <h2>Overzicht</h2>
 
 
     <table id="overzicht">
+        <thead>
         <tr>
-            <th>Naam</th>
+            <th id="naam">Naam</th>
             <th>Blok</th>
             <th>Toets</th>
-            <th>Cijfer</th>
+            <th>Resultaat</th>
         </tr>
-
-        <tr></tr>
+        </thead>
+        <tbody id="vulling">
+            <tr></tr>
+        </tbody>
     </table>
 
 
 </div>
-<script type="text/javascript" src="Script/Script_overzicht.js"></script>
 
 </body>
 </html>

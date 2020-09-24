@@ -4,33 +4,43 @@
     <meta charset="UTF-8">
     <title>invoeren</title>
     <link href="Style/Style_invoeren.css" type="text/css" rel="stylesheet">
+    <link href="Style/Style_basics.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
     <script type="text/javascript" src="Script/Script_invoeren.js"></script>
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
 </head>
 
 <body onload="loadstudentandtoets()">
-<div class="header">
-    <ul class="navbar">
-        <li><a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
-               title="HU"><img src="Visuals_index/HU_logo_klein.png"></a></li>
-        <li><a title="HOME">Account</a></li>
-        <li><a title="KOM KENNISMAKEN">Dashboard</a></li>
-        <li><a title='SHOWCASE'>Cursussen</a></li>
-        <li><a title="BLOG" class="active">Resultaten</a></li>
-        <li><a title="PLANNING">Groepen</a></li>
-        <li><a title="PRAKTISCH">Kalender</a></li>
-    </ul>
+<div class="navbar">
+    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
+       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
+    <a>Account</a>
+    <a>Dashboard</a>
+    <a>Cursussen</a>
+    <a href="index.html" class="active">Resultaten</a>
+    <a>Groepen</a>
+    <a>Kalender</a>
+</div>
+
+<div class="sidenav">
+    <a href="overzicht.html">Overzicht</a>
+    <a href="toets_invoeren.html">Toets invoeren</a>
+    <a href="#">Student invoeren</a>
+    <a href="invoeren.html" class="active">Resultaat invoeren</a>
+    <a>Statestiek</a>
+    <a href="Student.html">Student</a>
+</div>
+
+<div class="title">
+    <h3>Resultaten</h3>
 </div>
 
 <div class="content">
-    <h3>Resultaten</h3>
     <h2>Resultaat invoeren</h2>
     <p>Voer hier het toetsresultaat in</p>
 
 
     <div class="form">
-        <!--        <form id="myForm" action="http://62.251.126.253:63231/api/cijfer/" method="post">-->
         <label for="naam-dropdown">Naam leerling: </label>
         <select id="naam-dropdown" name="student" required></select> <br>
         <label for="blok-dropdown">Blok: </label>
@@ -42,12 +52,9 @@
             <option value="true">Voldoende</option>
             <option value="false">Onvoldoende</option>
         </select>
-
-
         <br>
         <br>
         <button onclick="post_invoer()" type="submit">Opslaan</button>
-        <!--        </form>-->
     </div>
 </div>
 
