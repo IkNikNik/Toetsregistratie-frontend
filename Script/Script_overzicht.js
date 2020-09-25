@@ -1,27 +1,28 @@
 window.onload = function () {
-    let studentData;
     // Stuurt fetch naar de 'cijfer' API omdat hierin de FK's in staan
     fetch('http://62.251.126.253:63231/api/cijfer.json')
         .then(response => response.json())
         .then(data => {
+            let sortName = 'ascending';
             appendData(data)
 
-            function appendData(data) {
+
+            function appendData(sortedData) {
                 let mainContainer = document.getElementById("vulling");
-                for (let i = 0; i < data.length; i++) {
+                for (let i = 0; i < sortedData.length; i++) {
                     let tr = document.createElement("tr");
                     tr.innerHTML = '';
                     mainContainer.appendChild(tr);
                     let trNaam = document.createElement("td");
-                    trNaam.innerHTML = data[i].student.voornaam + ' ' + data[i].student.achternaam;
+                    trNaam.innerHTML = sortedData[i].student.voornaam + ' ' + sortedData[i].student.achternaam;
                     mainContainer.appendChild(trNaam);
                     let trBlok = document.createElement("td");
-                    trBlok.innerHTML = data[i].blok;
+                    trBlok.innerHTML = sortedData[i].blok;
                     mainContainer.appendChild(trBlok);
                     let trToets = document.createElement("td");
-                    trToets.innerHTML = data[i].toets_code;
+                    trToets.innerHTML = sortedData[i].toets_code;
                     mainContainer.appendChild(trToets);
-                    let cijfer = data[i].voldoende;
+                    let cijfer = sortedData[i].voldoende;
                     if (cijfer === true) {
                         resultaat = 'Voldoende';
                     } else {
@@ -31,53 +32,41 @@ window.onload = function () {
                     trCijfer.innerHTML = resultaat;
                     mainContainer.appendChild(trCijfer);
                 }
+                document.getElementById("naam").onclick = function () {
+                    const gevuldeTabel = document.getElementById('vulling');
+                    gevuldeTabel.innerHTML = '';
+                    sorteren()
+                    console.log('klik')
+                    if (sortName === 'ascending') {
+                        sortName = 'descending';
+                    } else {
+                        sortName = 'ascending';
+                    }
+                };
+
             }
 
 
-            // document.getElementById("naam").onclick = function () {
-            //     const gevuldeTabel = document.getElementById('vulling');
-            //     gevuldeTabel.innerHTML = '';
-            //     sorteren()
-            //     console.log('klik')
-            // };
-            //
-            //
-            // function sorteren( a, b ) {
-            //     if ( a.student.voornaam < b.student.voornaam ){
-            //         return -1;
-            //     }
-            //     if ( a.student.voornaam > b.student.voornaam ){
-            //         return 1;
-            //     }
-            //     return 0;
-            // }
-            //
-            // data.sort( sorteren );
-            // appendData(sortedNameData)
+            // vanaf hier word er gepuzzeld met Sorteren. Deze code is nog niet af en hoeft nog niet beoordeeld.
+            // Tips zijn wel welkom natuurlijk
 
-            // function sorteren() {
-            //     let sortName = 'ascending';
-            //     let sortedNameData = data.sort((a, b) => {
-            //         if (a.student.voornaam > b.student.voornaam) {
-            //             return sortName = 1
-            //         }
-            //         else {
-            //             return sortName = -1
-            //         }
-            //     });
-            //
-            //     appendData(sortedNameData)
-            //
-            //
-            // }
+            function sorteren() {
+                const sortedNameData = data.sort((a, b) => {
+                    if (a.student.voornaam < b.student.voornaam) {
+                        return sortName === 'ascending' ? -1 : 1
+                     } else if (a.student.voornaam > b.student.voornaam){
+                        return sortName === 'ascending' ? 1 : -1
+                    } else {
+                        return 0
+                    }
+
+                })
+
+                appendData(sortedNameData)
+            }
 
 
         })
         .catch((err) => console.log(err));
 };
 
-// function sort(property) {
-//     return function(a, b) {
-//         return a[property - b[property]]
-//     }
-// }

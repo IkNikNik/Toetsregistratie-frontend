@@ -9,6 +9,10 @@ th {
     padding: 0 0 0 10px;
 }
 
+th a {
+    display: block;
+}
+
 td{
     border: solid 1px;
     padding: 0 10px;
@@ -19,3 +23,32 @@ table {
     border-collapse: collapse;
 }
 
+#naam:hover {
+    cursor: pointer;
+    color: #28aeff;
+}
+
+th .arrow {
+    padding-right: 18px;
+    position: relative;
+    z-index: -1;
+}
+.arrow:before,
+.arrow:after {
+    border: 4px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+}
+.arrow:before {
+    border-bottom-color: #666;
+    margin-top: -9px;
+}
+.arrow:after {
+    border-top-color: #666;
+    margin-top: 1px;
+}

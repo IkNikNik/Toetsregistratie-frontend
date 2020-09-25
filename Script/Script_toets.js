@@ -23,9 +23,6 @@ function loadjaarblok() {
                 });
             }
         )
-        .catch(function (err) {
-            console.error('Fetch Error -', err);
-        });
 }
 
 
@@ -46,7 +43,7 @@ function post_toets() {
 
     let data = {
         'toets_naam': selToetsNaam,
-        'blok': selectedBlok.value,
+        'blok': [selectedBlok.value],
         'toets_code': selToets,
         'jaar': selectedJaar.value
     };
@@ -59,8 +56,8 @@ function post_toets() {
     })
         .then(response => {
             const contentType = response.headers.get("content-type");
-            if (contentType && contentType.indexOf('application/json') != -1)
-                return response.json()
+            if (contentType && contentType.indexOf('application/json') !== -1)
+                return response.json();
             else {
                 console.log("nonJson received");
                 console.log(response.text());
@@ -69,8 +66,10 @@ function post_toets() {
         })
         .then(data => {
             console.log('Success:', data);
+            alert('Toets is opgeslagen');
         })
         .catch((error) => {
             console.error('Error:', error);
+            alert('Toets is niet opgeslagen')
         });
 }

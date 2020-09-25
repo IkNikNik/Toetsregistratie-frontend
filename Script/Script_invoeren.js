@@ -22,7 +22,7 @@ function loadstudentandtoets() {
                     }
                 });
             }
-        )
+        );
 
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
@@ -46,7 +46,7 @@ function loadstudentandtoets() {
                     }
                 });
             }
-        )
+        );
 
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
@@ -79,17 +79,17 @@ function loadstudentandtoets() {
 
 
 function post_invoer() {
-    var selToets = document.getElementById('toets-dropdown');
-    var selectedToets = selToets.options[selToets.selectedIndex];
+    let selToets = document.getElementById('toets-dropdown');
+    let selectedToets = selToets.options[selToets.selectedIndex];
 
-    var selStudent = document.getElementById('naam-dropdown');
-    var selectedStudent = selStudent.options[selStudent.selectedIndex];
+    let selStudent = document.getElementById('naam-dropdown');
+    let selectedStudent = selStudent.options[selStudent.selectedIndex];
 
-    var selCijfer = document.getElementById('cijfer');
-    var selectedCijfer = selCijfer.options[selCijfer.selectedIndex];
+    let selCijfer = document.getElementById('cijfer');
+    let selectedCijfer = selCijfer.options[selCijfer.selectedIndex];
 
-    var selBlok = document.getElementById('blok-dropdown');
-    var selectedBlok = selBlok.options[selBlok.selectedIndex];
+    let selBlok = document.getElementById('blok-dropdown');
+    let selectedBlok = selBlok.options[selBlok.selectedIndex];
     //waarde cijfer uit textveld lezen en in data stoppen.
 
 
@@ -108,8 +108,8 @@ function post_invoer() {
     })
         .then(response => {
             const contentType = response.headers.get("content-type");
-            if (contentType && contentType.indexOf('application/json') != -1)
-                return response.json()
+            if (contentType && contentType.indexOf('application/json') !== -1)
+                return response.json();
             else {
                 console.log("nonJson received");
                 console.log(response.text());
@@ -118,8 +118,10 @@ function post_invoer() {
         })
         .then(data => {
             console.log('Success:', data);
+            alert('Toets is opgeslagen');
         })
         .catch((error) => {
             console.error('Error:', error);
+            alert('Toets is niet opgeslagen')
         });
 }
