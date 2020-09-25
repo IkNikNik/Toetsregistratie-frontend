@@ -75,15 +75,13 @@ p {
 .sidenav a:hover {
     text-decoration: underline;
     cursor: pointer;
-
 }
-.sidenav a:hover:active {
+.sidenav .active:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-
-.sidenav a:active {
+.sidenav .active {
     color: #3d3d3d;
     border-left: #3d3d3d 2px solid;
 }
