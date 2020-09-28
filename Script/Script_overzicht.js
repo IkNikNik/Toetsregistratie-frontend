@@ -4,6 +4,9 @@ window.onload = function () {
         .then(response => response.json())
         .then(data => {
             let sortName = 'ascending';
+            let sortBlok = 'ascending';
+            let sortToets = 'ascending';
+            let sortResultaat = 'ascending';
             appendData(data)
 
 
@@ -32,15 +35,48 @@ window.onload = function () {
                     trCijfer.innerHTML = resultaat;
                     mainContainer.appendChild(trCijfer);
                 }
+
                 document.getElementById("naam").onclick = function () {
                     const gevuldeTabel = document.getElementById('vulling');
                     gevuldeTabel.innerHTML = '';
-                    sorteren()
-                    console.log('klik')
+                    sorterenNaam()
                     if (sortName === 'ascending') {
                         sortName = 'descending';
                     } else {
                         sortName = 'ascending';
+                    }
+                };
+
+                document.getElementById("blok").onclick = function () {
+                    const gevuldeTabel = document.getElementById('vulling');
+                    gevuldeTabel.innerHTML = '';
+                    sorterenBlok()
+                    if (sortBlok === 'ascending') {
+                        sortBlok = 'descending';
+                    } else {
+                        sortBlok = 'ascending';
+                    }
+                };
+
+                document.getElementById("toets").onclick = function () {
+                    const gevuldeTabel = document.getElementById('vulling');
+                    gevuldeTabel.innerHTML = '';
+                    sorterenToets()
+                    if (sortToets === 'ascending') {
+                        sortToets = 'descending';
+                    } else {
+                        sortToets = 'ascending';
+                    }
+                };
+
+                document.getElementById("resultaat").onclick = function () {
+                    const gevuldeTabel = document.getElementById('vulling');
+                    gevuldeTabel.innerHTML = '';
+                    sorterenResultaat()
+                    if (sortResultaat === 'ascending') {
+                        sortResultaat = 'descending';
+                    } else {
+                        sortResultaat = 'ascending';
                     }
                 };
 
@@ -50,11 +86,11 @@ window.onload = function () {
             // vanaf hier word er gepuzzeld met Sorteren. Deze code is nog niet af en hoeft nog niet beoordeeld.
             // Tips zijn wel welkom natuurlijk
 
-            function sorteren() {
+            function sorterenNaam() {
                 const sortedNameData = data.sort((a, b) => {
                     if (a.student.voornaam < b.student.voornaam) {
                         return sortName === 'ascending' ? -1 : 1
-                     } else if (a.student.voornaam > b.student.voornaam){
+                    } else if (a.student.voornaam > b.student.voornaam) {
                         return sortName === 'ascending' ? 1 : -1
                     } else {
                         return 0
@@ -65,6 +101,50 @@ window.onload = function () {
                 appendData(sortedNameData)
             }
 
+            function sorterenBlok() {
+                const sortedBlokData = data.sort((a, b) => {
+                    if (a.blok < b.blok) {
+                        return sortBlok === 'ascending' ? -1 : 1
+                    } else if (a.blok > b.blok) {
+                        return sortBlok === 'ascending' ? 1 : -1
+                    } else {
+                        return 0
+                    }
+
+                })
+
+                appendData(sortedBlokData)
+            }
+
+            function sorterenToets() {
+                const sortedToetsData = data.sort((a, b) => {
+                    if (a.toets_code < b.toets_code) {
+                        return sortToets === 'ascending' ? -1 : 1
+                    } else if (a.blok > b.blok) {
+                        return sortToets === 'ascending' ? 1 : -1
+                    } else {
+                        return 0
+                    }
+
+                })
+
+                appendData(sortedToetsData)
+            }
+
+            function sorterenResultaat() {
+                const sortedResultaatData = data.sort((a, b) => {
+                    if (a.voldoende > b.voldoende) {
+                        return sortResultaat === 'ascending' ? -1 : 1
+                    } else if (a.voldoende < b.voldoende) {
+                        return sortResultaat === 'ascending' ? 1 : -1
+                    } else {
+                        return 0
+                    }
+
+                })
+
+                appendData(sortedResultaatData)
+            }
 
         })
         .catch((err) => console.log(err));

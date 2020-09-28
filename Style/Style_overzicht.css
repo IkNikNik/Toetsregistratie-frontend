@@ -23,7 +23,7 @@ table {
     border-collapse: collapse;
 }
 
-#naam:hover {
+.knop:hover {
     cursor: pointer;
     color: #28aeff;
 }
