@@ -116,7 +116,7 @@ window.onload = function () {
                 const sortedToetsData = data.sort((a, b) => {
                     if (a.toets_code < b.toets_code) {
                         return sortToets === 'ascending' ? -1 : 1
-                    } else if (a.blok > b.blok) {
+                    } else if (a.toets_code > b.toets_code) {
                         return sortToets === 'ascending' ? 1 : -1
                     } else {
                         return 0
