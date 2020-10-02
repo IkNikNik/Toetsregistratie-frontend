@@ -82,10 +82,6 @@ window.onload = function () {
 
             }
 
-
-            // vanaf hier word er gepuzzeld met Sorteren. Deze code is nog niet af en hoeft nog niet beoordeeld.
-            // Tips zijn wel welkom natuurlijk
-
             function sorterenNaam() {
                 const sortedNameData = data.sort((a, b) => {
                     if (a.student.voornaam < b.student.voornaam) {
