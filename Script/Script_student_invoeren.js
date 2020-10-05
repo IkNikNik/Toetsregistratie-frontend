@@ -1,9 +1,9 @@
 function post_student() {
-    var selVoor = document.getElementById('voornaam').value;
+    let selVoor = document.getElementById('voornaam').value;
 
-    var selAchter = document.getElementById('achternaam').value;
+    let selAchter = document.getElementById('achternaam').value;
 
-    var selNummer = document.getElementById('nummer');
+    let selNummer = document.getElementById('nummer').value;
 
 
 
@@ -31,10 +31,10 @@ function post_student() {
         })
         .then(data => {
             console.log('Success:', data);
-            alert('Toets is opgeslagen');
+            alert('Student is opgeslagen');
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('Toets is niet opgeslagen')
+            alert('Student is niet opgeslagen')
         });
 }
