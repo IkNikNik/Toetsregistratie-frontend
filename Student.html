@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Student</title>
     <link href="Style/student.css" type="text/css" rel="stylesheet">
+    <link href="Style/resultaten.css" type="text/css" rel="stylesheet">
     <link href="Style/basics.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="Script/basics.js"></script>
 </head>
@@ -32,8 +33,24 @@
 </div>
 
 <div class="content">
-    <h2>Studentoverzicht</h2>
-
+    <div>
+        <h2>Studentoverzicht</h2>
+    </div>
+    <div class="buttondiv">
+        <a class="button" href="student_invoeren.html">Student toevoegen</a>
+    </div>
+    <table id="overzicht">
+        <thead>
+        <tr>
+            <th id="voornaam" class="knop"><a class="arrow">Voornaam</a></th>
+            <th id="achternaam" class="knop"><a class="arrow">Achternaam</a></th>
+            <th id="nummer" class="knop"><a class="arrow">Studentnummer</a></th>
+        </tr>
+        </thead>
+        <tbody id="vulling">
+        <tr></tr>
+        </tbody>
+    </table>
 </div>
 
 <script type="text/javascript" src="Script/student.js"></script>
