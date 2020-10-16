@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Student</title>
-    <link href="Style/student.css" type="text/css" rel="stylesheet">
+    <link href="Style/student_individueel.css" type="text/css" rel="stylesheet">
     <link href="Style/basics.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="Script/basics.js"></script>
 </head>
@@ -35,67 +35,23 @@
     <h2>Studentoverzicht</h2>
     <div class="info">
         <div class="profiel">
-            <img src="Visuals_index/Foto.png">
-            <p>Nikki Westenborg</p>
-            <p>Jaar 2</p>
-            <form role="form">
-                <div class="form-group">
-                    <label>Project</label>
-                    <div class="input-group">
-                        <p>
-                            <input type="text" class="form-control editField" value="Toetsregistratie" readonly>
-                        </p>
-                        <p>
-                            <input type="text" class="form-control editField" value="Frond-end" readonly>
-                        </p>
-                        <p>
-                            <input type="text" class="form-control editField" value="40" readonly>
-                        </p>
-                    </div>
-                </div>
-            </form>
-            <div class='row text-center'>
-                <button type="button" class="btn btn-danger editBtn">Edit off</button>
-            </div>
+            <img src="Visuals_index/icon.png">
+            <div id="naam"></div>
+
         </div>
 
         <div class="statestiek">
-            <table>
+            <table id="overzicht">
+                <thead>
                 <tr>
-                    <th></th>
-                    <th scope="col">Blok 1</th>
-                    <th scope="col">Blok 2</th>
-                    <th scope="col">Blok 3</th>
-                    <th scope="col">Blok 4</th>
+                    <th id="toets" class="knop"><a class="arrow">Toets</a></th>
+                    <th id="blok" class="knop"><a class="arrow">Blok</a></th>
+                    <th id="resultaat" class="knop"><a class="arrow">Resultaat</a></th>
                 </tr>
-                <tr>
-                    <th scope="row">Jaar 1</th>
-                    <td>Behaald</td>
-                    <td>Behaald</td>
-                    <td>Behaald</td>
-                    <td>Niet behaald</td>
-                </tr>
-                <tr>
-                    <th scope="row">Jaar 2</th>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Jaar 3</th>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <th scope="row">Jaar 4</th>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
+                </thead>
+                <tbody id="vulling">
+                <tr></tr>
+                </tbody>
             </table>
         </div>
 
@@ -103,5 +59,6 @@
 </div>
 
 <script type="text/javascript" src="Script/student_individueel.js"></script>
+<script type="text/javascript" src="Script/student_filterdata.js"></script>
 </body>
 </html>

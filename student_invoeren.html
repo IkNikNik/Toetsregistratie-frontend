@@ -33,20 +33,24 @@
 
 <div class="content">
     <div class="wrap">
-    <h2>Student toevoegen</h2>
-    <a href="student.html" class="close"></a>
+        <h2>Student toevoegen</h2>
+        <a href="student.html" class="close"></a>
     </div>
-    <div class="form">
+
+    <form id="myForm" onsubmit="event.preventDefault(); validateMyForm();">
+    <div class="form" >
         <label for="voornaam">Voornaam: </label>
-        <input id="voornaam" name="voornaam" required> <br>
+        <input id="voornaam" name="voornaam" type="text" required> <br>
         <label for="achternaam">Achternaam: </label>
-        <input id="achternaam" name="achternaam" required> <br>
+        <input id="achternaam" name="achternaam" type="text" required> <br>
         <label for="nummer">Studentnummer: </label>
-        <input id="nummer" name="student_nummer" required> <br>
+        <input id="nummer" name="student_nummer" type="number" required>
         <br>
         <br>
-        <button onclick="post_student()" type="submit">Toevoegen</button>
+        <br>
+        <button id="submit" type="submit">Toevoegen</button>
     </div>
+    </form>
 
 
 </div>

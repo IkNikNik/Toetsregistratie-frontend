@@ -104,7 +104,6 @@ window.onload = function () {
 
                 appendData(sortedNummer)
             }
-
         })
         .catch((err) => console.log(err));
 };
