@@ -9,7 +9,6 @@ window.onload = function () {
             let sortJaar = 'ascending';
             appendData(data)
 
-
             function appendData(sortedData) {
                 let mainContainer = document.getElementById("vulling");
                 for (let i = 0; i < sortedData.length; i++) {

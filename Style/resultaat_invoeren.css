@@ -1,10 +1,20 @@
-.content p{
-    text-align: center;
-}
-
 .form {
     display: grid;
     width: fit-content;
     text-align: center;
-    margin: 50px auto 0;
+    margin: auto;
+}
+
+.contents {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.contents h2 {
+    text-align: center;
+    margin: 0 auto 15px;
+}
+
+.contents p {
+    margin-bottom: 15px;
 }

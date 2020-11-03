@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+    <link href="Style/student_individueel.css" type="text/css" rel="stylesheet">
+    <link href="Style/basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Script/basics.js"></script>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
+       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
+    <a>Account</a>
+    <a>Dashboard</a>
+    <a>Cursussen</a>
+    <a href="index.html" class="active">Resultaten</a>
+    <a>Groepen</a>
+    <a>Kalender</a>
+</div>
+
+<div class="sidenav">
+    <a class='link active' href="student.html">Student</a>
+</div>
+
+<div class="title">
+    <h3>Resultaten</h3>
+</div>
+
+<div class="content">
+    <h2>Studentoverzicht</h2>
+    <div class="info">
+        <div class="profiel">
+            <img src="Visuals_index/icon.png">
+            <div id="naam"></div>
+
+        </div>
+
+        <div class="statestiek">
+            <table id="overzicht">
+                <thead>
+                <tr>
+                    <th id="toets" class="knop"><a class="arrow">Toets</a></th>
+                    <th id="blok" class="knop"><a class="arrow">Blok</a></th>
+                    <th id="resultaat" class="knop"><a class="arrow">Resultaat</a></th>
+                </tr>
+                </thead>
+                <tbody id="vulling">
+                <tr></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="Script/student_individueel.js"></script>
+<script type="text/javascript" src="Script/student_filterdata.js"></script>
+</body>
+</html>

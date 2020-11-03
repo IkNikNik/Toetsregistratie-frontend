@@ -9,47 +9,23 @@
 </head>
 <body>
 
-<div class="navbar">
-    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
-       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
-    <a>Account</a>
-    <a>Dashboard</a>
-    <a>Cursussen</a>
-    <a href="index.html" class="active">Resultaten</a>
-    <a>Groepen</a>
-    <a>Kalender</a>
-</div>
-
-<div class="sidenav">
-    <a class='link' href="resultaten.html">Resultaten</a>
-    <a class='link active' href="student.html">Student</a>
-    <a class='link' href="toets.html">Toets </a>
-    <a class='link' href="statistiek.html">Statistiek</a>
-</div>
-
-<div class="title">
-    <h3>Resultaten</h3>
-</div>
-
-<div class="content">
-    <div class="wrap">
+<div class="contents">
         <h2>Student toevoegen</h2>
-        <a href="student.html" class="close"></a>
-    </div>
+
 
     <form id="myForm" onsubmit="event.preventDefault(); validateMyForm();">
-    <div class="form" >
-        <label for="voornaam">Voornaam: </label>
-        <input id="voornaam" name="voornaam" type="text" required> <br>
-        <label for="achternaam">Achternaam: </label>
-        <input id="achternaam" name="achternaam" type="text" required> <br>
-        <label for="nummer">Studentnummer: </label>
-        <input id="nummer" name="student_nummer" type="number" required>
-        <br>
-        <br>
-        <br>
-        <button id="submit" type="submit">Toevoegen</button>
-    </div>
+        <div class="form">
+            <label for="voornaam">Voornaam: </label>
+            <input id="voornaam" name="voornaam" type="text" required> <br>
+            <label for="achternaam">Achternaam: </label>
+            <input id="achternaam" name="achternaam" type="text" required> <br>
+            <label for="nummer">Studentnummer: </label>
+            <input id="nummer" name="student_nummer" type="number" required>
+            <br>
+            <br>
+            <br>
+            <button id="submit" type="submit">Toevoegen</button>
+        </div>
     </form>
 
 

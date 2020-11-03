@@ -13,7 +13,7 @@ p {
     padding: 0;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
@@ -57,7 +57,6 @@ h1{
 }
 
 /*sidenav*/
-
 .sidenav {
     height: 100%;
     width: fit-content;
@@ -80,6 +79,7 @@ h1{
     text-decoration: underline;
     cursor: pointer;
 }
+
 .sidenav .active:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -90,7 +90,7 @@ h1{
     border-left: #3d3d3d 2px solid;
 }
 
-    /* titel */
+/* titel */
 .title h3 {
     margin: 0 0 0 100px;
     padding: 30px 0 15px 0;
@@ -109,6 +109,7 @@ h1{
     height: 75px;
 
 }
+
 /*content*/
 
 .content {
@@ -117,9 +118,25 @@ h1{
     color: #3d3d3d;
 }
 
-.content h2{
+.content h2 {
     text-align: center;
     margin: 0 auto;
+}
+
+.content a {
+    display: block;
+    text-decoration: none;
+    color: #3d3d3d;
+}
+
+.content a:hover {
+    text-decoration: underline;
+    color: #28aeff;
+}
+
+.box {
+    margin: 20px auto 0;
+    width: fit-content;
 }
 
 /*knoppie */
@@ -148,9 +165,11 @@ h1{
     height: 32px;
     opacity: 0.3;
 }
+
 .close:hover {
     opacity: 1;
 }
+
 .close:before, .close:after {
     position: absolute;
     content: ' ';
@@ -158,9 +177,11 @@ h1{
     width: 2px;
     background-color: #333;
 }
+
 .close:before {
     transform: rotate(45deg);
 }
+
 .close:after {
     transform: rotate(-45deg);
 }

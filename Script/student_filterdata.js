@@ -30,19 +30,34 @@ if (searchParams.has('student')) {
                     trCijfer.innerHTML = resultaat;
                     mainContainer.appendChild(trCijfer);
                 }
-                let info = document.getElementById("naam");
-                for (let i = 0; i < data.length; i++) {
-                    let naam = document.createElement("p");
-                    naam.innerHTML = data[i].student.voornaam + ' ' + data[i].student.achternaam;
-                    ;
-                    info.appendChild(naam);
-                }
-            }
 
+            }
             console.log(data)
         })
         .catch((err) => console.log(err));
+
+
+fetch('http://62.251.126.253:63231/api/student.json/?voornaam=' + student)
+    .then(response => response.json())
+    .then(data => {
+        yoeyoe(data)
+
+        function yoeyoe(data) {
+            let info = document.getElementById("naam");
+            for (let i = 0; i < data.length; i++) {
+                let naam = document.createElement("p");
+                naam.innerHTML = data[i].voornaam + ' ' + data[i].achternaam;
+                info.yoeyoe(naam);
+            }
+        }
+
+        console.log(data)
+    })
+    .catch((err) => console.log(err));
 }
+
+
+
 table.addEventListener("click", function (e) {
     let student = e.target.innerText;
     let newSearchParams = new URLSearchParams();

@@ -12,14 +12,17 @@ function loadstudentandtoets() {
                 }
 
                 response.json().then(function (data) {
-                    let option;
+                    let option = '';
 
                     for (let i = 0; i < data.length; i++) {
                         option = document.createElement('option');
                         option.text = data[i].voornaam + ' ' + data[i].achternaam;
                         option.value = data[i].id;
                         dropdown.add(option);
+                        // option += '<option value="' + data[i].voornaam + ' ' + data[i].achternaam + '" />';
+                        // option.value = data[i].id;
                     }
+                    // document.getElementById('naam-dropdown').innerHTML = options;
                 });
             }
         );
@@ -79,6 +82,7 @@ function loadstudentandtoets() {
 
 
 function post_invoer() {
+    event.preventDefault()
     let selToets = document.getElementById('toets-dropdown');
     let selectedToets = selToets.options[selToets.selectedIndex];
 
@@ -90,6 +94,8 @@ function post_invoer() {
 
     let selBlok = document.getElementById('blok-dropdown');
     let selectedBlok = selBlok.options[selBlok.selectedIndex];
+
+    let selData = document.getElementById('datum').value;
     //waarde cijfer uit textveld lezen en in data stoppen.
 
 
@@ -97,8 +103,11 @@ function post_invoer() {
         'student': selectedStudent.value,
         'blok': selectedBlok.value,
         'toets_code': selectedToets.value,
-        'voldoende': selectedCijfer.value
+        'voldoende': selectedCijfer.value,
+        'datum' : selData
     };
+
+
     fetch('http://62.251.126.253:63231/api/cijferid/', {
         method: 'post',
         headers: {
@@ -119,9 +128,47 @@ function post_invoer() {
         .then(data => {
             console.log('Success:', data);
             alert('Toets is opgeslagen');
+            console.log(selData)
         })
         .catch((error) => {
             console.error('Error:', error);
             alert('Toets is niet opgeslagen')
         });
 }
+
+let optionsCache = [];
+
+function filterItems(el) {
+    let value = el.value.toLowerCase();
+    let form = el.form;
+    let opt, sel = form.student;
+    if (value == '') {
+        restoreOptions();
+    } else {
+        for (let i=sel.options.length-1; i>=0; i--) {
+            opt = sel.options[i];
+            if (opt.text.toLowerCase().indexOf(value) == -1){
+                sel.removeChild(opt)
+            }
+        }
+    }
+}
+
+function restoreOptions(){
+    let sel = document.getElementById('naam-dropdown');
+    sel.options.length = 0;
+    for (let i=0, iLen=optionsCache.length; i<iLen; i++) {
+        sel.appendChild(optionsCache[i]);
+    }
+}
+
+
+window.onload = function() {
+    // Load cache
+    let sel = document.getElementById('naam-dropdown');
+    for (let i=0, iLen=sel.options.length; i<iLen; i++) {
+        optionsCache.push(sel.options[i]);
+    }
+}
+
+
