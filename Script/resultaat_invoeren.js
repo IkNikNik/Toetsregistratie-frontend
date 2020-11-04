@@ -104,7 +104,7 @@ function post_invoer() {
         'blok': selectedBlok.value,
         'toets_code': selectedToets.value,
         'voldoende': selectedCijfer.value,
-        'datum' : selData
+        'datum_toets' : selData
     };
 
 

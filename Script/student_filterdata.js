@@ -3,13 +3,13 @@ let searchParams = new URLSearchParams(window.location.search);
 if (searchParams.has('student')) {
     let student = searchParams.get('student');
 
-    fetch('http://62.251.126.253:63231/api/cijfer.json/?student__voornaam=' + student)
+    fetch('http://62.251.126.253:63231/api/cijfer.json/?student__student_nummer=' + student)
         .then(response => response.json())
         .then(data => {
             appendData(data)
 
             function appendData(data) {
-                let mainContainer = document.getElementById("vulling");
+                let mainContainer = document.getElementById("vulsel");
                 for (let i = 0; i < data.length; i++) {
                     let tr = document.createElement("tr");
                     tr.innerHTML = '';
@@ -30,32 +30,36 @@ if (searchParams.has('student')) {
                     trCijfer.innerHTML = resultaat;
                     mainContainer.appendChild(trCijfer);
                 }
-
+                let info = document.getElementById("naam");
+                for (let i = 0; i < data.length; i++) {
+                    let naam = data[i].student.voornaam + ' ' + data[i].student.achternaam;
+                    info.innerHTML = naam;
+                }
             }
+
             console.log(data)
         })
         .catch((err) => console.log(err));
 
 
-fetch('http://62.251.126.253:63231/api/student.json/?voornaam=' + student)
-    .then(response => response.json())
-    .then(data => {
-        yoeyoe(data)
-
-        function yoeyoe(data) {
-            let info = document.getElementById("naam");
-            for (let i = 0; i < data.length; i++) {
-                let naam = document.createElement("p");
-                naam.innerHTML = data[i].voornaam + ' ' + data[i].achternaam;
-                info.yoeyoe(naam);
-            }
-        }
-
-        console.log(data)
-    })
-    .catch((err) => console.log(err));
+// fetch('http://62.251.126.253:63231/api/student.json/?voornaam=' + student)
+//     .then(response => response.json())
+//     .then(data => {
+//         yoeyoe(data)
+//
+//         function yoeyoe(data) {
+//             let info = document.getElementById("naam");
+//             for (let i = 0; i < data.length; i++) {
+//                 let naam = document.createElement("p");
+//                 naam.innerHTML = data[i].voornaam + ' ' + data[i].achternaam;
+//                 info.yoeyoe(naam);
+//             }
+//         }
+//
+//         console.log(data)
+//     })
+//     .catch((err) => console.log(err));
 }
-
 
 
 table.addEventListener("click", function (e) {

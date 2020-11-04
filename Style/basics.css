@@ -91,7 +91,7 @@ h1 {
 }
 
 /* titel */
-.title h3 {
+.title a {
     margin: 0 0 0 100px;
     padding: 30px 0 15px 0;
     font-size: 30px;
@@ -101,7 +101,12 @@ h1 {
     position: fixed;
     width: 100%;
     background: white;
+    color: black;
+    text-decoration: none;
+}
 
+.easteregg:hover {
+    cursor: default;
 }
 
 .title {
