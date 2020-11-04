@@ -144,6 +144,11 @@ h1 {
     width: fit-content;
 }
 
+.afbeeldingen img{
+    display: block;
+    margin: 15px auto 0;
+}
+
 /*knoppie */
 .button {
     background-color: #28aeff;
