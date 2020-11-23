@@ -1,8 +1,8 @@
-function loadstudentandtoets() {
+function loadStudentToets() {
     let dropdown = document.getElementById('naam-dropdown');
     dropdown.length = 0;
 
-    fetch('http://62.251.126.253:63231/api/student.json')
+    fetch('https://62.251.126.253:63231/api/student.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -26,7 +26,7 @@ function loadstudentandtoets() {
 
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
-    fetch('http://62.251.126.253:63231/api/blok.json')
+    fetch('https://62.251.126.253:63231/api/blok.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -51,7 +51,7 @@ function loadstudentandtoets() {
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
 
-    fetch('http://62.251.126.253:63231/api/toets.json')
+    fetch('https://62.251.126.253:63231/api/toets.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -99,7 +99,7 @@ function post_invoer() {
         'toets_code': selectedToets.value,
         'voldoende': selectedCijfer.value
     };
-    fetch('http://62.251.126.253:63231/api/cijferid/', {
+    fetch('https://62.251.126.253:63231/api/cijferid/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

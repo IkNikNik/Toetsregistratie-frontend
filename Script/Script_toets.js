@@ -1,8 +1,8 @@
-function loadjaarblok() {
+function loadJaarBlok() {
 
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
-    fetch('http://62.251.126.253:63231/api/blok.json')
+    fetch('https://62.251.126.253:63231/api/blok.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -26,7 +26,7 @@ function loadjaarblok() {
 }
 
 
-function post_toets() {
+function postToets() {
     var selToets = document.getElementById('toetscode').value;
     // var selectedToets = selToets[selToets.selectedIndex];
 
@@ -47,7 +47,7 @@ function post_toets() {
         'toets_code': selToets,
         'jaar': selectedJaar.value
     };
-    fetch('http://62.251.126.253:63231/api/toets/', {
+    fetch('https://62.251.126.253:63231/api/toets/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

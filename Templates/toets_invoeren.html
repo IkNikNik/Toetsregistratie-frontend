@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Toets invoeren</title>
-    <link href="Style/Style_toets.css" type="text/css" rel="stylesheet">
-    <link href="Style/Style_basics.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="Script/Script_toets.js"></script>
-    <script type="text/javascript" src="Script/Script_basics.js"></script>
+    <link href="../Style/Style_toets.css" type="text/css" rel="stylesheet">
+    <link href="../Style/Style_basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="../Script/Script_toets.js"></script>
 </head>
 
-<body onload="loadjaarblok()">
+<body onload="loadJaarBlok()">
 
 <div class="navbar">
     <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
-       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
+       title="HU"><img src="../Visuals_index/HU_logo_klein.png" alt="Image could not be found"></a>
     <a>Account</a>
     <a>Dashboard</a>
     <a>Cursussen</a>
@@ -26,9 +25,9 @@
     <a  class='link' href="overzicht.html">Overzicht</a>
     <a  class='link active' href="toets_invoeren.html">Toets invoeren</a>
     <a  class='link' href="student_invoeren.html">Student invoeren</a>
-    <a  class='link ' href="invoeren.html" class="active">Resultaat invoeren</a>
-    <a class='link' href="statestiek.html">Statestiek</a>
-    <a  class='link' href="Student.html">Student</a>
+    <a  class='link active' href="invoeren.html">Resultaat invoeren</a>
+    <a  class='link' href="statistiek.html">Statistiek</a>
+    <a  class='link' href="student.html">Student</a>
 </div>
 
 <div class="title">
@@ -52,7 +51,7 @@
         <select id="blok-dropdown" name="blok" required></select> <br>
         <br>
         <br>
-        <button onclick="post_toets()" type="submit">Opslaan</button>
+        <button onclick="postToets()" type="submit">Opslaan</button>
     </div>
 </div>
 
