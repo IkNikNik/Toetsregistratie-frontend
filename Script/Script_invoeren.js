@@ -1,7 +1,6 @@
 function loadStudentToets() {
     let dropdown = document.getElementById('naam-dropdown');
     dropdown.length = 0;
-
     fetch('https://62.251.126.253:63231/api/student.json')
         .then(
             function (response) {
