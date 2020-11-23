@@ -1,6 +1,6 @@
 /* Basics */
 html {
-    font-family: 'Avenir';
+    font-family: 'Avenir', serif;
     font-weight: 100;
 }
 
@@ -25,7 +25,7 @@ h1{
     position: fixed;
     background-color: #f1f1f1;
     overflow-x: hidden;
-    padding-top: 0px;
+    padding-top: 0;
     text-align: center;
 }
 
@@ -121,8 +121,10 @@ h1{
     text-align: center;
 }
 
+/*Button layout */
+
 .plus-button {
-    border: 2px solid lightgrey;
+    border: 2px solid deepskyblue;
     background-color: #fff;
     font-size: 16px;
     height: 2.5em;

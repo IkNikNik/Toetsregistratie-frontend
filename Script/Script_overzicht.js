@@ -3,39 +3,47 @@ window.onload = function () {
     fetch('https://62.251.126.253:63231/api/cijfer.json')
         .then(response => response.json())
         .then(data => {
-            // What do these variables do?
-            let sortName = 'ascending';
-            let sortBlok = 'ascending';
-            let sortToets = 'ascending';
-            let sortResultaat = 'ascending';
+            // @TODO: These variables try to sort the data... WIP. More below.
+            let sortName = data.student.voornaam.sort();
+            let sortBlok = data.blok.sort()
+            let sortToets = data.toetsnaam.sort()
+            let sortResultaat = data.resultaat.sort()
+
+            // putting the fetched data in the function 'appendData'.
             appendData(data)
 
-            // What does this function do? Appends data to...
-            function appendData(sortedData) {
-                let mainContainer = document.getElementById("vulling");
-                for (let i = 0; i < sortedData.length; i++) {
-                    // Ads a TR element with '' to the maincontainer.
+            // Appends data to the table
+            function appendData(inputData) {
+                // mainContainer is the variable wherein the table will appear.
+                let mainContainer = document.getElementById("content");
+                for (let i = 0; i < inputData.length; i++) {
+
+                    // HTML NOTE: td = table data, tr = table row, th = table header
+
+                    // Ads an empty table row to the table thus filling its content.
                     let tr = document.createElement("tr");
                     tr.innerHTML = '';
                     mainContainer.appendChild(tr);
 
                     // Adds the students' given- and family name to the table.
+                    // The following lines will do the same for other attributes.
+                    // The result is a table with a students':
+                    // given name, family name, 'blok', testname, result.
                     let trNaam = document.createElement("td");
-                    trNaam.innerHTML = sortedData[i].student.voornaam + ' ' + sortedData[i].student.achternaam;
+                    trNaam.innerHTML = inputData[i].student.voornaam + ' ' + inputData[i].student.achternaam;
                     mainContainer.appendChild(trNaam);
 
-                    // Adds an area for the 'blok' name of the test.
                     let trBlok = document.createElement("td");
-                    trBlok.innerHTML = sortedData[i].blok;
+                    trBlok.innerHTML = inputData[i].blok;
                     mainContainer.appendChild(trBlok);
 
                     // Adds an area for the name of the test.
                     let trToets = document.createElement("td");
-                    trToets.innerHTML = sortedData[i].toets_code;
+                    trToets.innerHTML = inputData[i].toets_code;
                     mainContainer.appendChild(trToets);
 
                     // Checks if the grade is a passing one or a non-passing one.
-                    let cijfer = sortedData[i].voldoende;
+                    let cijfer = inputData[i].voldoende;
                     if (cijfer === true) {
                         resultaat = 'Voldoende';
                     } else {
@@ -50,8 +58,8 @@ window.onload = function () {
 
                 // What does this function do?
                 document.getElementById("naam").onclick = function () {
-                    const gevuldeTabel = document.getElementById('vulling');
-                    gevuldeTabel.innerHTML = '';
+                    const table = document.getElementById('content');
+                    table.innerHTML = '';
                     sorterenNaam()
                     if (sortName === 'ascending') {
                         sortName = 'descending';
@@ -62,8 +70,8 @@ window.onload = function () {
 
                 // What does this function do?
                 document.getElementById("blok").onclick = function () {
-                    const gevuldeTabel = document.getElementById('vulling');
-                    gevuldeTabel.innerHTML = '';
+                    const table = document.getElementById('content');
+                    table.innerHTML = '';
                     sorterenBlok()
                     if (sortBlok === 'ascending') {
                         sortBlok = 'descending';
@@ -74,8 +82,8 @@ window.onload = function () {
 
                 // What does this function do?
                 document.getElementById("toets").onclick = function () {
-                    const gevuldeTabel = document.getElementById('vulling');
-                    gevuldeTabel.innerHTML = '';
+                    const table = document.getElementById('content');
+                    table.innerHTML = '';
                     sorterenToets()
                     if (sortToets === 'ascending') {
                         sortToets = 'descending';
@@ -86,8 +94,8 @@ window.onload = function () {
 
                 // What does this function do?
                 document.getElementById("resultaat").onclick = function () {
-                    const gevuldeTabel = document.getElementById('vulling');
-                    gevuldeTabel.innerHTML = '';
+                    const table = document.getElementById('content');
+                    table.innerHTML = '';
                     sorterenResultaat()
                     if (sortResultaat === 'ascending') {
                         sortResultaat = 'descending';

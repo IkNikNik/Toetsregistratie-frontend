@@ -1,27 +1,23 @@
-function postStudent() {
-    let selVoornaam = document.getElementById('voornaam').value;
-    let selAchternaam = document.getElementById('achternaam').value;
-    let selNummer = document.getElementById('nummer').value;
+// @TODO: Write a PATCH request for a user-selected row.
+let url = 'https://62.251.126.253:63231/api/cijfer.json'
+let xhr = new XMLHttpRequest();
 
-    let data = {
-        'voornaam': selVoornaam,
-        'achternaam': selAchternaam,
-        'student_nummer': selNummer,
-    };
-
-    fetch('https://62.251.126.253:63231/api/student/', {
-        method: 'post',
+function editGrade() {
+    // PATCh request for the graded result 'resultaat'.
+    let grade = document.getElementById("resultaat")
+    fetch(url, {
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(grade)
     })
         .then(response => {
             const contentType = response.headers.get("content-type");
             if (contentType && contentType.indexOf('application/json') !== -1)
                 return response.json();
             else {
-                console.log("nonJson received");
+                console.log("non-JSON object received!");
                 console.log(response.text());
                 return null;
             }

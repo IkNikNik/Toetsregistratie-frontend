@@ -18,12 +18,12 @@
         <a>Kalender</a>
     </div>
     <div class="sidenav">
-        <a class='link' href="overzicht.html">Overzicht</a>
-        <a class='link' href="toets_invoeren.html">Toets invoeren</a>
-        <a class='link active' href="student_invoeren.html">Student invoeren</a>
-        <a class='link' href="invoeren.html">Resultaat invoeren</a>
-        <a class='link' href="statistiek.html">Statistiek</a>
-        <a class='link' href="student.html">Student</a>
+        <a class='link' href="overzicht.html">                  Overzicht</a>
+        <a class='link' href="toets_invoeren.html">             Toets invoeren</a>
+        <a class='link active' href="student_invoeren.html">    Student invoeren</a>
+        <a class='link' href="invoeren.html">                   Resultaat invoeren</a>
+        <a class='link' href="statistiek.html">                 Statistiek</a>
+        <a class='link' href="student.html">                    Student</a>
     </div>
     <div class="title">
         <h3>Resultaten</h3>
@@ -32,14 +32,17 @@
         <h2>Studentoverzicht</h2>
         <div class="form">
             <label for="voornaam">Voornaam: </label>
-            <input id="voornaam" name="voornaam" required> <br>
+            <input id="voornaam" name="voornaam" required>
+            <br>
             <label for="achternaam">Achternaam: </label>
-            <input id="achternaam" name="achternaam" required> <br>
+            <input id="achternaam" name="achternaam" required>
+            <br>
             <label for="nummer">Studentnummer: </label>
-            <input id="nummer" name="student_nummer" required> <br>
+            <input id="nummer" name="student_nummer" required>
             <br>
             <br>
-            <button onclick="post_student()" type="submit">Toevoegen</button>
+            <br>
+            <button class="plus-button" onclick="postStudent()" type="submit">Toevoegen</button>
         </div>
     </div>
     <script type="text/javascript" src="../Script/Script_student_invoeren.js"></script>
