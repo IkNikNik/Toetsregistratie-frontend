@@ -1,6 +1,12 @@
 function loadStudentToets() {
-    let dropdown = document.getElementById('naam-dropdown');
-    dropdown.length = 0;
+
+    fetchStudenten()
+    fetchBlokken()
+    fetchToetsen()
+}
+function fetchStudenten() {
+    let dropdownNaam = document.getElementById('naam-dropdown');
+    dropdownNaam.length = 0;
     fetch('https://62.251.126.253:63231/api/student.json')
         .then(
             function (response) {
@@ -17,12 +23,13 @@ function loadStudentToets() {
                         option = document.createElement('option');
                         option.text = data[i].voornaam + ' ' + data[i].achternaam;
                         option.value = data[i].id;
-                        dropdown.add(option);
+                        dropdownNaam.add(option);
                     }
                 });
             }
         );
-
+}
+function fetchBlokken() {
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
     fetch('https://62.251.126.253:63231/api/blok.json')
@@ -46,7 +53,8 @@ function loadStudentToets() {
                 });
             }
         );
-
+}
+function fetchToetsen() {
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
 
@@ -76,8 +84,7 @@ function loadStudentToets() {
         });
 }
 
-
-function post_invoer() {
+function postInvoer() {
     let selToets = document.getElementById('toets-dropdown');
     let selectedToets = selToets.options[selToets.selectedIndex];
 
