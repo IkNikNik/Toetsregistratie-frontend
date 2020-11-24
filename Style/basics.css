@@ -144,9 +144,22 @@ h1 {
     width: fit-content;
 }
 
-.afbeeldingen img{
+.grafiek img{
     display: block;
+    width: 70%;
     margin: 15px auto 0;
+}
+
+.tabel img {
+    margin: 15px 15px 0;
+    width: 15%;
+    display: inline-block
+}
+
+.tabel {
+    text-align: center
+
+
 }
 
 /*knoppie */

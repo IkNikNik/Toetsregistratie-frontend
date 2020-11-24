@@ -1,7 +1,6 @@
-function loadstudentandtoets() {
-    let dropdown = document.getElementById('naam-dropdown');
-    dropdown.length = 0;
+let studentenLijst = [];
 
+function loadstudentandtoets() {
     fetch('http://62.251.126.253:63231/api/student.json')
         .then(
             function (response) {
@@ -12,17 +11,12 @@ function loadstudentandtoets() {
                 }
 
                 response.json().then(function (data) {
-                    let option = '';
-
+                    studentenLijst = [];
                     for (let i = 0; i < data.length; i++) {
-                        option = document.createElement('option');
-                        option.text = data[i].voornaam + ' ' + data[i].achternaam;
-                        option.value = data[i].id;
-                        dropdown.add(option);
-                        // option += '<option value="' + data[i].voornaam + ' ' + data[i].achternaam + '" />';
-                        // option.value = data[i].id;
+                        let studentNaam = data[i].voornaam + ' ' + data[i].achternaam;
+                        studentenLijst.push({'naam': studentNaam, 'id': data[i].id})
                     }
-                    // document.getElementById('naam-dropdown').innerHTML = options;
+                    loadItems('');
                 });
             }
         );
@@ -68,7 +62,7 @@ function loadstudentandtoets() {
 
                     for (let i = 0; i < data.length; i++) {
                         optionToets = document.createElement('option');
-                        optionToets.text = data[i].toets_code;
+                        optionToets.text = data[i].toets_naam + ' code: ' + data[i].toets_code;
                         optionToets.value = data[i].id;
                         dropdownToets.add(optionToets);
                     }
@@ -103,8 +97,9 @@ function post_invoer() {
         'student': selectedStudent.value,
         'blok': selectedBlok.value,
         'toets_code': selectedToets.value,
+        'toets_naam': selectedToets.value,
         'voldoende': selectedCijfer.value,
-        'datum_toets' : selData
+        'datum_toets': selData
     };
 
 
@@ -127,48 +122,32 @@ function post_invoer() {
         })
         .then(data => {
             console.log('Success:', data);
-            alert('Toets is opgeslagen');
+            alert('Resultaat is opgeslagen');
             console.log(selData)
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('Toets is niet opgeslagen')
+            alert('Resultaat is niet opgeslagen')
         });
 }
 
-let optionsCache = [];
-
-function filterItems(el) {
-    let value = el.value.toLowerCase();
-    let form = el.form;
-    let opt, sel = form.student;
-    if (value == '') {
-        restoreOptions();
-    } else {
-        for (let i=sel.options.length-1; i>=0; i--) {
-            opt = sel.options[i];
-            if (opt.text.toLowerCase().indexOf(value) == -1){
-                sel.removeChild(opt)
-            }
+function loadItems(filter) {
+    let dropdown = document.getElementById('naam-dropdown');
+    dropdown.length = 0;
+    for (let i = 0; i < studentenLijst.length; i++) {
+        option = document.createElement('option');
+        option.text = studentenLijst[i].naam;
+        option.value = studentenLijst[i].id;
+        if (studentenLijst[i].naam.toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+            dropdown.add(option);
         }
     }
 }
 
-function restoreOptions(){
-    let sel = document.getElementById('naam-dropdown');
-    sel.options.length = 0;
-    for (let i=0, iLen=optionsCache.length; i<iLen; i++) {
-        sel.appendChild(optionsCache[i]);
-    }
+function filterItems(el) {
+    let value = el.value.toLowerCase();
+    loadItems(value);
 }
 
-
-window.onload = function() {
-    // Load cache
-    let sel = document.getElementById('naam-dropdown');
-    for (let i=0, iLen=sel.options.length; i<iLen; i++) {
-        optionsCache.push(sel.options[i]);
-    }
-}
 
 
