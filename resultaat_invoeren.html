@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>invoeren</title>
+    <link href="Style/resultaat_invoeren.css" type="text/css" rel="stylesheet">
+    <link href="Style/basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Script/resultaat_invoeren.js"></script>
+    <script type="text/javascript" src="Script/basics.js"></script>
+</head>
+
+<body onload="loadstudentandtoets()">
+
+<div class="contents">
+    <div class="wrap">
+        <h2>Resultaat invoeren</h2>
+
+    </div>
+    <p>Voer hier het toetsresultaat in</p>
+
+    <form class="form" autocomplete="off">
+        <label for="naam-dropdown">Naam leerling: </label>
+        <input type="text" id="searchFilter" name="searchFilter" onkeyup="filterItems(this);"
+               placeholder="Filter op naam">
+        <select id="naam-dropdown" name="student" required></select> <br>
+        <label for="blok-dropdown">Blok: </label>
+        <select id="blok-dropdown" name="blok" required></select> <br>
+        <label for="toets-dropdown">Toets: </label>
+        <select id="toets-dropdown" name="toets_code" required></select> <br>
+        <label for="cijfer">Resultaat: </label>
+        <select id="cijfer" name="voldoende" required>
+            <option value="true">Voldoende</option>
+            <option value="false">Onvoldoende</option>
+        </select>
+        <label for="datum">Gemaakt op: </label>
+        <input type="date" id="datum">
+        <br>
+        <br>
+        <button onclick="post_invoer()" type="submit">Opslaan</button>
+    </form>
+</div>
+
+
+</body>
+</html>

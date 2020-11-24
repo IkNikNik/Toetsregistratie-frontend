@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toetsoverzicht</title>
+    <link href="Style/toets.css" type="text/css" rel="stylesheet">
+    <link href="Style/basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Script/toets.js" async></script>
+    <script type="text/javascript" src="Script/basics.js"></script>
+</head>
+
+<body>
+<div class="navbar">
+    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
+       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
+    <a>Account</a>
+    <a>Dashboard</a>
+    <a>Cursussen</a>
+    <a href="index.html" class="active">Resultaten</a>
+    <a>Groepen</a>
+    <a href="dev.html">Kalender</a>
+</div>
+
+<div class="sidenav">
+    <a class='link' href="resultaten.html">Resultaten</a>
+    <a class='link' href="student.html">Student</a>
+    <a class='link active' href="toets.html">Toets </a>
+    <a class='link' href="statistiek.html">Statistiek</a>
+</div>
+
+<div class="title">
+    <a href="dev.html" class="easteregg">Resultaten</a>
+</div>
+
+<div class="content">
+        <h2>Toetsoverzicht</h2>
+
+    <table id="overzicht">
+        <thead>
+        <tr>
+            <th id="toetsnaam" class="knop"><a class="arrow">Toets naam</a></th>
+            <th id="toetscode" class="knop"><a class="arrow">Toets code</a></th>
+            <th id="jaar" class="knop"><a class="arrow">Jaar</a></th>
+            <th id="blok" class="knop"><a class="arrow">Blok</a></th>
+        </tr>
+        </thead>
+        <tbody id="vulling">
+        <tr></tr>
+        </tbody>
+    </table>
+
+    <iframe src="toets_invoeren.html"></iframe>
+</div>
+
+</body>
+</html>

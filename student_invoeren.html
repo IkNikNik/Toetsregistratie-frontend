@@ -3,54 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Student</title>
-    <link href="Style/Style_student_invoeren.css" type="text/css" rel="stylesheet">
-    <link href="Style/Style_basics.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="Script/Script_basics.js"></script>
+    <link href="Style/student_invoeren.css" type="text/css" rel="stylesheet">
+    <link href="Style/basics.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="Script/basics.js"></script>
 </head>
 <body>
 
-<div class="navbar">
-    <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
-       title="HU"><img src="Visuals_index/HU_logo_klein.png"></a>
-    <a>Account</a>
-    <a>Dashboard</a>
-    <a>Cursussen</a>
-    <a href="index.html" class="active">Resultaten</a>
-    <a>Groepen</a>
-    <a>Kalender</a>
-</div>
+<div class="contents">
+        <h2>Student toevoegen</h2>
 
-<div class="sidenav">
-    <a class='link' href="overzicht.html">Overzicht</a>
-    <a class='link' href="toets_invoeren.html">Toets invoeren</a>
-    <a class='link active' href="student_invoeren.html">Student invoeren</a>
-    <a class='link' href="invoeren.html">Resultaat invoeren</a>
-    <a class='link' href="statestiek.html">Statestiek</a>
-    <a class='link' href="Student.html">Student</a>
-</div>
 
-<div class="title">
-    <h3>Resultaten</h3>
-</div>
-
-<div class="content">
-    <h2>Studentoverzicht</h2>
-
-    <div class="form">
-        <label for="voornaam">Voornaam: </label>
-        <input id="voornaam" name="voornaam" required> <br>
-        <label for="achternaam">Achternaam: </label>
-        <input id="achternaam" name="achternaam" required> <br>
-        <label for="nummer">Studentnummer: </label>
-        <input id="nummer" name="student_nummer" required> <br>
-        <br>
-        <br>
-        <button onclick="post_student()" type="submit">Toevoegen</button>
-    </div>
+    <form id="myForm" onsubmit="event.preventDefault(); validateMyForm();">
+        <div class="form">
+            <label for="voornaam">Voornaam: </label>
+            <input id="voornaam" name="voornaam" type="text" required> <br>
+            <label for="achternaam">Achternaam: </label>
+            <input id="achternaam" name="achternaam" type="text" required> <br>
+            <label for="nummer">Studentnummer: </label>
+            <input id="nummer" name="student_nummer" type="number" required>
+            <br>
+            <br>
+            <br>
+            <button id="submit" type="submit">Toevoegen</button>
+        </div>
+    </form>
 
 
 </div>
 
-<script type="text/javascript" src="Script/Script_student_invoeren.js"></script>
+<script type="text/javascript" src="Script/student_invoeren.js"></script>
 </body>
 </html>

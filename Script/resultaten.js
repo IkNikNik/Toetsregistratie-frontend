@@ -1,6 +1,6 @@
 window.onload = function () {
     // Stuurt fetch naar de 'cijfer' API omdat hierin de FK's in staan
-    fetch('http://62.251.126.253:63231/api/cijfer.json')
+    fetch('https://hu-toetsregistratie.nl/api/cijfer.json')
         .then(response => response.json())
         .then(data => {
             let sortName = 'ascending';
@@ -144,5 +144,8 @@ window.onload = function () {
 
         })
         .catch((err) => console.log(err));
+
+
 };
+
 

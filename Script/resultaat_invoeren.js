@@ -1,8 +1,7 @@
-function loadstudentandtoets() {
-    let dropdown = document.getElementById('naam-dropdown');
-    dropdown.length = 0;
+let studentenLijst = [];
 
-    fetch('http://62.251.126.253:63231/api/student.json')
+function loadstudentandtoets() {
+    fetch('https://hu-toetsregistratie.nl/api/student.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -12,21 +11,19 @@ function loadstudentandtoets() {
                 }
 
                 response.json().then(function (data) {
-                    let option;
-
+                    studentenLijst = [];
                     for (let i = 0; i < data.length; i++) {
-                        option = document.createElement('option');
-                        option.text = data[i].voornaam + ' ' + data[i].achternaam;
-                        option.value = data[i].id;
-                        dropdown.add(option);
+                        let studentNaam = data[i].voornaam + ' ' + data[i].achternaam;
+                        studentenLijst.push({'naam': studentNaam, 'id': data[i].id})
                     }
+                    loadItems('');
                 });
             }
         );
 
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
-    fetch('http://62.251.126.253:63231/api/blok.json')
+    fetch('https://hu-toetsregistratie.nl/api/blok.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -51,7 +48,7 @@ function loadstudentandtoets() {
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
 
-    fetch('http://62.251.126.253:63231/api/toets.json')
+    fetch('https://hu-toetsregistratie.nl/api/toets.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -65,7 +62,7 @@ function loadstudentandtoets() {
 
                     for (let i = 0; i < data.length; i++) {
                         optionToets = document.createElement('option');
-                        optionToets.text = data[i].toets_code;
+                        optionToets.text = data[i].toets_naam + ' code: ' + data[i].toets_code;
                         optionToets.value = data[i].id;
                         dropdownToets.add(optionToets);
                     }
@@ -79,6 +76,7 @@ function loadstudentandtoets() {
 
 
 function post_invoer() {
+    event.preventDefault()
     let selToets = document.getElementById('toets-dropdown');
     let selectedToets = selToets.options[selToets.selectedIndex];
 
@@ -90,6 +88,8 @@ function post_invoer() {
 
     let selBlok = document.getElementById('blok-dropdown');
     let selectedBlok = selBlok.options[selBlok.selectedIndex];
+
+    let selData = document.getElementById('datum').value;
     //waarde cijfer uit textveld lezen en in data stoppen.
 
 
@@ -97,9 +97,13 @@ function post_invoer() {
         'student': selectedStudent.value,
         'blok': selectedBlok.value,
         'toets_code': selectedToets.value,
-        'voldoende': selectedCijfer.value
+        'toets_naam': selectedToets.value,
+        'voldoende': selectedCijfer.value,
+        'datum_toets': selData
     };
-    fetch('http://62.251.126.253:63231/api/cijferid/', {
+
+
+    fetch('https://hu-toetsregistratie.nl/api/cijferid/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -118,10 +122,32 @@ function post_invoer() {
         })
         .then(data => {
             console.log('Success:', data);
-            alert('Toets is opgeslagen');
+            alert('Resultaat is opgeslagen');
+            console.log(selData)
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('Toets is niet opgeslagen')
+            alert('Resultaat is niet opgeslagen')
         });
 }
+
+function loadItems(filter) {
+    let dropdown = document.getElementById('naam-dropdown');
+    dropdown.length = 0;
+    for (let i = 0; i < studentenLijst.length; i++) {
+        option = document.createElement('option');
+        option.text = studentenLijst[i].naam;
+        option.value = studentenLijst[i].id;
+        if (studentenLijst[i].naam.toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+            dropdown.add(option);
+        }
+    }
+}
+
+function filterItems(el) {
+    let value = el.value.toLowerCase();
+    loadItems(value);
+}
+
+
+

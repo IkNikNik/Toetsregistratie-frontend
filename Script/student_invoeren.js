@@ -1,18 +1,25 @@
+ function validateMyForm() {
+     let elemlength = document.getElementById('nummer').value.length;
+     if (elemlength < 7 || elemlength > 7) {
+         alert("Het studentnummer moet 7 cijfers bevatten");
+         return false;
+     } else {
+         post_student()
+         return true;
+     }
+ }
+
 function post_student() {
     let selVoor = document.getElementById('voornaam').value;
-
     let selAchter = document.getElementById('achternaam').value;
-
     let selNummer = document.getElementById('nummer').value;
-
-
 
     let data = {
         'voornaam': selVoor,
         'achternaam': selAchter,
         'student_nummer': selNummer,
     };
-    fetch('http://62.251.126.253:63231/api/student/', {
+    fetch('https://hu-toetsregistratie.nl/api/student/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -37,4 +44,11 @@ function post_student() {
             console.error('Error:', error);
             alert('Student is niet opgeslagen')
         });
+    let form = document.getElementById("myForm");
+    form.reset();
+}
+
+nummer.oninput = function () {
+    if (this.value.length > 7)
+        this.value = this.value.slice(1000000, 9999999);
 }
