@@ -19,7 +19,7 @@ function post_student() {
         'achternaam': selAchter,
         'student_nummer': selNummer,
     };
-    fetch('http://62.251.126.253:63231/api/student/', {
+    fetch('https://hu-toetsregistratie.nl/api/student/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

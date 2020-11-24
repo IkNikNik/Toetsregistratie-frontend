@@ -3,7 +3,7 @@ let searchParams = new URLSearchParams(window.location.search);
 if (searchParams.has('student')) {
     let student = searchParams.get('student');
 
-    fetch('http://62.251.126.253:63231/api/cijfer.json/?student__student_nummer=' + student)
+    fetch('https://hu-toetsregistratie.nl/api/cijfer.json/?student__student_nummer=' + student)
         .then(response => response.json())
         .then(data => {
             appendData(data)

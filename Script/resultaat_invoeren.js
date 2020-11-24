@@ -1,7 +1,7 @@
 let studentenLijst = [];
 
 function loadstudentandtoets() {
-    fetch('http://62.251.126.253:63231/api/student.json')
+    fetch('https://hu-toetsregistratie.nl/api/student.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -23,7 +23,7 @@ function loadstudentandtoets() {
 
     let dropdownBlok = document.getElementById('blok-dropdown');
     dropdownBlok.length = 0;
-    fetch('http://62.251.126.253:63231/api/blok.json')
+    fetch('https://hu-toetsregistratie.nl/api/blok.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -48,7 +48,7 @@ function loadstudentandtoets() {
     let dropdownToets = document.getElementById('toets-dropdown');
     dropdownToets.length = 0;
 
-    fetch('http://62.251.126.253:63231/api/toets.json')
+    fetch('https://hu-toetsregistratie.nl/api/toets.json')
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -103,7 +103,7 @@ function post_invoer() {
     };
 
 
-    fetch('http://62.251.126.253:63231/api/cijferid/', {
+    fetch('https://hu-toetsregistratie.nl/api/cijferid/', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

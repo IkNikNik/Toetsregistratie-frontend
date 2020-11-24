@@ -1,6 +1,6 @@
 window.onload = function () {
     // Stuurt fetch naar de 'cijfer' API omdat hierin de FK's in staan
-    fetch('http://62.251.126.253:63231/api/student.json')
+    fetch('https://hu-toetsregistratie.nl/api/student.json')
         .then(response => response.json())
         .then(data => {
             let sortVoornaam = 'ascending';
