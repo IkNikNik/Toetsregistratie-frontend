@@ -5,11 +5,26 @@
     <title>Button</title>
 
     <style>
+        .container {
+            width: 120px;
+            height: 300px;
+        }
+        #dropdown {
+            display: none;
+        }
         #resultaat-dropdown {
-            width: 150px;
-            text-align: left;
+            width: 100%;
             border: solid 1px;
             padding: 0 0 0 10px;
+            text-align: center;
+        }
+        button {
+            color: azure;
+            width: 100%;
+            background-color: #8e9da9;
+        }
+        button:hover {
+            background-color: #f89c54;
         }
     </style>
 
@@ -18,8 +33,12 @@
 <!---
 @WHAT
 A dropdown list that sends the selected data directly to the database API.
-After selection a PATCH request will be sent to hu-toetsregistratie/api to change
-the voldoende value to either true or false. true = voldoende and false = onvoldoende.
+After selection a PATCH request will be sent to hu-toetsregistratie/api to
+ change the voldoende value to either true or false (true = voldoende and
+ false = onvoldoende).
+
+Problem: right now it only updates the graded result of student with ID value 1.
+
 @WHY
 Teachers(=client for our project) want to be able to edit mistakenly added results.
 @ALTERNATIVES
@@ -28,39 +47,64 @@ a dropdown list had been chosen.
 @PLANS
 Planning to add two buttons: save (sends the selection to the api after pressing)
 and cancel (cancels the editing process).
+TODO: Make a function that generates the correct api-url to send the patch request to.
 -->
 
+<div class="container">
+    <button id="editbutton" onclick="toggleDropdown()">edit</button>
 
-<div class="button">
-    <select id="resultaat-dropdown" name="resultaat" onchange="patchResultaat()">
-<!--        <label for="voldoende">Voldoende</label>-->
-        <option value="voldoende" id="voldoende">voldoende</option>
-<!--        <label for="onvoldoende">Onvoldoende</label>-->
-        <option value="onvoldoende" id="onvoldoende">onvoldoende</option>
-    </select>
+    <div id="dropdown">
+        <label for="resultaat-dropdown"></label>
+        <select id="resultaat-dropdown" name="resultaat">
+    <!--        <label for="voldoende">Voldoende</label>-->
+            <option value="voldoende" id="voldoende">voldoende</option>
+    <!--        <label for="onvoldoende">Onvoldoende</label>-->
+            <option value="onvoldoende" id="onvoldoende">onvoldoende</option>
+        </select>
+
+        <input type="submit" onclick="sendPatchRequest()">
+    </div>
 </div>
 
+
 <script>
-    // empty dictionary that will contain the data to be send in the PATCH request
+    // Toggles the display attribute of the dropdown
+    function toggleDropdown() {
+        const editButton = document.getElementById("editbutton");
+        const dropdown = document.getElementById("dropdown");
+        if (dropdown.style.display == 'none') {
+            dropdown.style.display = "block";
+            editButton.innerHTML = "cancel";
+        } else {
+            dropdown.style.display = "none";
+            editButton.innerHTML = "edit";
+        }}
+
+    // empty dictionary that will contain the data to be used by patchResult
     let newInput = {'voldoende': undefined};
 
-    function patchResultaat() {
+    function sendPatchRequest() {
+        // Logs the values of newInput in the console. (FOR TESTING)
         console.log('waarde voor de functie');
         console.log(newInput);
-        // dropdown element in the html
-        resultaat = document.getElementById("resultaat-dropdown").value;
-        if (resultaat == 'voldoende') {
+
+        // Variable 'result' points to the value selected in the dropdown.
+        let result = document.getElementById("resultaat-dropdown").value;
+
+        if (result == 'voldoende') {
             newInput.voldoende = true;
         } else {
             newInput.voldoende = false;
         }
-        updateResult('https://hu-toetsregistratie.nl/api/cijferid/1/?format=json', newInput)
+        // Sends the selected value in a patch request to the API.
+        patchResult('https://hu-toetsregistratie.nl/api/cijferid/1/?format=json', newInput)
+        // Logs the values sent to the API in the console. (FOR TESTING)
         console.log('waarde na de functie');
         console.log(newInput);
     }
 
-    // PATCH new data to https://hu-toetsregistratie.nl/api
-    async function updateResult(url = ' ', inputData = {}) {
+    // patchResult sends the input as a PATCH request to the API.
+    async function patchResult(url = ' ', inputData = {}) {
         const response = await fetch(url, {
             method: 'PATCH',
             mode: 'cors',
