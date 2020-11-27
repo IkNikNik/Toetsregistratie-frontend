@@ -170,6 +170,7 @@ h1 {
     color: white;
     text-decoration: none;
     display: inline-block;
+    border: none;
 }
 
 .button:hover {

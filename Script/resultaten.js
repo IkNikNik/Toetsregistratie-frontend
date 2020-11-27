@@ -25,6 +25,9 @@ window.onload = function () {
                     let trToets = document.createElement("td");
                     trToets.innerHTML = sortedData[i].toets_code;
                     mainContainer.appendChild(trToets);
+                    let trDatum = document.createElement("td");
+                    trDatum.innerHTML = sortedData[i].datum_toets;
+                    mainContainer.appendChild(trDatum);
                     let cijfer = sortedData[i].voldoende;
                     if (cijfer === true) {
                         resultaat = 'Voldoende';
@@ -66,6 +69,17 @@ window.onload = function () {
                         sortToets = 'descending';
                     } else {
                         sortToets = 'ascending';
+                    }
+                };
+
+                document.getElementById("datum").onclick = function () {
+                    const gevuldeTabel = document.getElementById('vulling');
+                    gevuldeTabel.innerHTML = '';
+                    sorterenDatum()
+                    if (sortDatum === 'ascending') {
+                        sortDatum = 'descending';
+                    } else {
+                        sortDatum = 'ascending';
                     }
                 };
 
@@ -127,6 +141,21 @@ window.onload = function () {
                 appendData(sortedToetsData)
             }
 
+            function sorterenDatum() {
+                const sortedDatumData = data.sort((a, b) => {
+                    if (a.datum_toets < b.datum_toets) {
+                        return sortToets === 'ascending' ? -1 : 1
+                    } else if (a.datum_toets > b.datum_toets) {
+                        return sortToets === 'ascending' ? 1 : -1
+                    } else {
+                        return 0
+                    }
+
+                })
+
+                appendData(sortedDatumData)
+            }
+
             function sorterenResultaat() {
                 const sortedResultaatData = data.sort((a, b) => {
                     if (a.voldoende > b.voldoende) {
@@ -142,10 +171,20 @@ window.onload = function () {
                 appendData(sortedResultaatData)
             }
 
+
         })
         .catch((err) => console.log(err));
 
-
+    document.getElementById("knopje").onclick = function() {myFunction()};
+    function myFunction() {
+        var elmnt = document.getElementById("iframe");
+        elmnt.scrollIntoView();
+    }
+    document.getElementById("knop").onclick = function() {myFunction2()};
+    function myFunction2() {
+        var elmnt = document.getElementById("boven");
+        elmnt.scrollIntoView();
+    }
 };
 
 

@@ -28,7 +28,7 @@
     <a class='link' href="statistiek.html">Statistiek</a>
 </div>
 
-<div class="title">
+<div class="title" id="boven">
     <a href="dev.html" class="easteregg">Resultaten</a>
 </div>
 
@@ -36,13 +36,16 @@
     <div>
         <h2>Behaalde resultaten</h2>
     </div>
-
+    <div class="buttondiv">
+        <button id="knopje" class="button">Resultaat invoeren</button>
+    </div>
     <table id="overzicht">
         <thead>
         <tr>
             <th id="naam" class="knop"><a class="arrow">Naam</a></th>
             <th id="blok" class="knop"><a class="arrow">Blok</a></th>
             <th id="toets" class="knop"><a class="arrow">Toets</a></th>
+            <th id="datum" class="knop"><a class="arrow">Afnamedatum</a></th>
             <th id="resultaat" class="knop"><a class="arrow">Resultaat</a></th>
         </tr>
         </thead>
@@ -51,7 +54,10 @@
         </tbody>
     </table>
 
-    <iframe src="resultaat_invoeren.html"></iframe>
+    <iframe id="iframe" src="resultaat_invoeren.html"></iframe>
+    <div class="buttondiv">
+        <button id="knop" class="button">Terug naar overzicht</button>
+    </div>
 </div>
 
 </body>

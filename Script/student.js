@@ -106,5 +106,15 @@ window.onload = function () {
             }
         })
         .catch((err) => console.log(err));
+    document.getElementById("knopje").onclick = function() {myFunction()};
+    function myFunction() {
+        var elmnt = document.getElementById("iframe");
+        elmnt.scrollIntoView();
+    }
+    document.getElementById("knop").onclick = function() {myFunction2()};
+    function myFunction2() {
+        var elmnt = document.getElementById("boven");
+        elmnt.scrollIntoView();
+    }
 };
 

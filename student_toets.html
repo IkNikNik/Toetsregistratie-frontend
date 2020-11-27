@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Toetsoverzicht</title>
-    <link href="Style/toets.css" type="text/css" rel="stylesheet">
+    <title>Toets overzicht</title>
     <link href="Style/basics.css" type="text/css" rel="stylesheet">
+    <link href="Style/toets.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="Script/toets.js" async></script>
-    <script type="text/javascript" src="Script/basics.js"></script>
 </head>
-
 <body>
 <div class="navbar">
     <a href="https://www.hu.nl/?gclid=EAIaIQobChMI5KiVpfe_6QIV2-vtCh0PpgCJEAAYASAAEgIm7fD_BwE"
@@ -18,25 +16,22 @@
     <a>Cursussen</a>
     <a href="index.html" class="active">Resultaten</a>
     <a>Groepen</a>
-    <a href="dev.html">Kalender</a>
+    <a>Kalender</a>
 </div>
 
 <div class="sidenav">
-    <a class='link' href="resultaten.html">Resultaten</a>
-    <a class='link' href="student.html">Student</a>
-    <a class='link active' href="toets.html">Toets </a>
-    <a class='link' href="statistiek.html">Statistiek</a>
+    <a class='link' href="student_pagina.html">Resultaten</a>
+    <a class='link active' href="student_toets.html">Toetsen</a>
 </div>
 
-<div class="title" id="boven">
+<div class="title">
     <a href="dev.html" class="easteregg">Resultaten</a>
 </div>
 
+
 <div class="content">
-        <h2>Toetsoverzicht</h2>
-    <div class="buttondiv">
-        <button id="knopje" class="button">Toets toevoegen</button>
-    </div>
+    <h2>Toetsoverzicht</h2>
+
     <table id="overzicht">
         <thead>
         <tr>
@@ -50,12 +45,6 @@
         <tr></tr>
         </tbody>
     </table>
-
-    <iframe id="iframe" src="toets_invoeren.html"></iframe>
-    <div class="buttondiv">
-        <button id="knop" class="button">Terug naar overzicht</button>
-    </div>
 </div>
-
 </body>
 </html>
